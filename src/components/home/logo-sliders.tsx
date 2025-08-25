@@ -6,7 +6,7 @@ import React, { useState, useRef, useEffect } from "react";
 const LogoSliders = () => {
   const [isDragging, setIsDragging] = useState(false);
   const [scrollPosition, setScrollPosition] = useState(0);
-  const [animationId, setAnimationId] =useState<number | null>(null);
+  const animationId = useRef<number | null>(null);
   const startX = useRef(0);
   const containerRef = useRef(null);
   const scrollSpeed = 0.5; // pixels per frame for auto-scroll
@@ -49,37 +49,36 @@ const LogoSliders = () => {
     if (!isDragging) {
       const animate = () => {
         setScrollPosition((prev) => {
-          const logoWidth = 200; // Approximate width + gap
+          const logoWidth = 200;
           const totalWidth = logoData.length * logoWidth;
           const newPos = prev - scrollSpeed;
 
-          // Reset when one complete set has passed
-          if (Math.abs(newPos) >= totalWidth) {
-            return 0;
-          }
-          return newPos;
+          return Math.abs(newPos) >= totalWidth ? 0 : newPos;
         });
-        setAnimationId(requestAnimationFrame(animate));
+
+        animationId.current = requestAnimationFrame(animate);
       };
 
-      const id = requestAnimationFrame(animate);
-      setAnimationId(id);
+      animationId.current = requestAnimationFrame(animate);
 
       return () => {
-        if (id) {
-          cancelAnimationFrame(id);
+        if (animationId.current) {
+          cancelAnimationFrame(animationId.current);
+          animationId.current = null;
         }
       };
     } else {
-      if (animationId) {
-        cancelAnimationFrame(animationId);
-        setAnimationId(null);
+      // If dragging starts, stop animation
+      if (animationId.current) {
+        cancelAnimationFrame(animationId.current);
+        animationId.current = null;
       }
     }
-  }, [isDragging, animationId, logoData.length]);
+  }, [isDragging, logoData.length]);
 
-
-  type DragEvent = React.MouseEvent<HTMLDivElement> | React.TouchEvent<HTMLDivElement>;
+  type DragEvent =
+    | React.MouseEvent<HTMLDivElement>
+    | React.TouchEvent<HTMLDivElement>;
 
   const handleStart = (e: DragEvent) => {
     setIsDragging(true);
@@ -87,7 +86,6 @@ const LogoSliders = () => {
     startX.current = clientX;
     e.preventDefault();
   };
-
 
   interface MoveEvent extends React.MouseEvent<HTMLDivElement> {
     nativeEvent: MouseEvent;
@@ -129,7 +127,6 @@ const LogoSliders = () => {
   const handleLeave = () => {
     setIsDragging(false);
   };
-
 
   interface ContextMenuEvent extends React.MouseEvent<HTMLDivElement> {
     nativeEvent: MouseEvent;
@@ -176,7 +173,7 @@ const LogoSliders = () => {
                 }
               }}
             >
-              <div className="relative h-24 w-full">
+              <div className="relative h-24 w-[200px]">
                 <Image
                   src={logo.src}
                   alt={logo.alt}
