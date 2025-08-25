@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { collection, getDocs, query } from "firebase/firestore";
 import { db } from "../firebase";
+import Image from "next/image";
 
 // Helper function for URL slug conversion
 const createCategorySlug = (category:string) => {
@@ -109,9 +110,9 @@ const Navbar = () => {
       <div className="max-w-screen-xl lg:max-w-[95%] h-full relative flex items-center justify-between mx-auto py-4">
         {/* Logo - centered in mobile/tablet, left in desktop */}
         <div className="flex absolute left-1/2 -translate-x-1/2 lg:relative lg:left-auto lg:translate-x-0 lg:justify-start">
-          <a href="/" className="flex items-center space-x-2">
-            <img src="/Logonav.png" alt="Logo" className="h-20 lg:h-24" />
-          </a>
+          <Link href="/" className="flex items-center space-x-2">
+            <Image src="/Logonav.png" fill alt="Logo" className="h-20 lg:h-24" />
+          </Link>
         </div>
 
         {/* Hamburger menu - right in mobile/tablet */}
