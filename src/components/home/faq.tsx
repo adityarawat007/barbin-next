@@ -60,7 +60,7 @@ const FAQ = () => {
         setError(null);
       } catch (err) {
         console.error("Error fetching FAQs:", err);
-        setError("Failed to load FAQs. Please try again later." as any);
+        setError("Failed to load FAQs. Please try again later.");
         setFaqData(fallbackFAQs);
       } finally {
         setLoading(false);

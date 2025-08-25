@@ -6,7 +6,7 @@ import React, { useState, useRef, useEffect } from "react";
 const LogoSliders = () => {
   const [isDragging, setIsDragging] = useState(false);
   const [scrollPosition, setScrollPosition] = useState(0);
-  const [animationId, setAnimationId] = useState(null);
+  const [animationId, setAnimationId] =useState<number | null>(null);
   const startX = useRef(0);
   const containerRef = useRef(null);
   const scrollSpeed = 0.5; // pixels per frame for auto-scroll
@@ -35,8 +35,13 @@ const LogoSliders = () => {
   // Create multiple sets for seamless looping
   const repeatedLogos = [...logoData, ...logoData, ...logoData];
 
-  const getClientX = (e: any) => {
-    return e.touches ? e.touches[0].clientX : e.clientX;
+  const getClientX = (e: TouchEvent | MouseEvent): number => {
+    if ("touches" in e && e.touches.length > 0) {
+      return e.touches[0].clientX;
+    } else if ("clientX" in e) {
+      return e.clientX;
+    }
+    return 0;
   };
 
   // Auto-scroll animation
@@ -54,11 +59,11 @@ const LogoSliders = () => {
           }
           return newPos;
         });
-        setAnimationId(requestAnimationFrame(animate) as any);
+        setAnimationId(requestAnimationFrame(animate));
       };
 
       const id = requestAnimationFrame(animate);
-      setAnimationId(id as any);
+      setAnimationId(id);
 
       return () => {
         if (id) {
@@ -71,23 +76,35 @@ const LogoSliders = () => {
         setAnimationId(null);
       }
     }
-  }, [isDragging]);
+  }, [isDragging, animationId, logoData.length]);
 
-  const handleStart = (e: any) => {
+
+  type DragEvent = React.MouseEvent<HTMLDivElement> | React.TouchEvent<HTMLDivElement>;
+
+  const handleStart = (e: DragEvent) => {
     setIsDragging(true);
-    const clientX = getClientX(e);
+    const clientX = getClientX(e.nativeEvent as TouchEvent | MouseEvent);
     startX.current = clientX;
     e.preventDefault();
   };
 
-  const handleMove = (e: any) => {
+
+  interface MoveEvent extends React.MouseEvent<HTMLDivElement> {
+    nativeEvent: MouseEvent;
+  }
+  interface TouchMoveEvent extends React.TouchEvent<HTMLDivElement> {
+    nativeEvent: TouchEvent;
+  }
+  type MoveDragEvent = MoveEvent | TouchMoveEvent;
+
+  const handleMove = (e: MoveDragEvent) => {
     if (!isDragging) return;
 
     e.preventDefault();
-    const clientX = getClientX(e);
+    const clientX = getClientX(e.nativeEvent as TouchEvent | MouseEvent);
     const deltaX = clientX - startX.current;
 
-    setScrollPosition((prev) => {
+    setScrollPosition((prev: number) => {
       const logoWidth = 200;
       const totalWidth = logoData.length * logoWidth;
       let newPos = prev + deltaX * 0.8; // Reduce sensitivity for smoother feel
@@ -113,7 +130,12 @@ const LogoSliders = () => {
     setIsDragging(false);
   };
 
-  const handleContextMenu = (e: any) => {
+
+  interface ContextMenuEvent extends React.MouseEvent<HTMLDivElement> {
+    nativeEvent: MouseEvent;
+  }
+
+  const handleContextMenu = (e: ContextMenuEvent) => {
     e.preventDefault();
   };
 

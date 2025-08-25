@@ -25,7 +25,7 @@ const Footer = () => {
             />
             <div className="absolute inset-0 bg-black/50 rounded-4xl flex flex-col justify-center items-center text-white p-4">
               <h2 className="text-white text-3xl md:text-5xl helvetica-bold mb-6 w-[60%] md:w-full text-center">
-                Let's <span className="text-[#c49a6c]">Elevate</span> Your{' '}
+                Let&apos;s <span className="text-[#c49a6c]">Elevate</span> Your{' '}
                 <span className="text-[#c49a6c]">Venue</span>.
               </h2>
 

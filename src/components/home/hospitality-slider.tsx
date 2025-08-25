@@ -43,7 +43,7 @@ const HospitalitySlider = () => {
   }
 ];
 
-  const handleSlideChange = (newSlideIndex:any) => {
+  const handleSlideChange = (newSlideIndex:number) => {
     if (isTransitioning || newSlideIndex === currentSlide) return;
     
     setIsTransitioning(true);
@@ -68,7 +68,7 @@ const HospitalitySlider = () => {
     handleSlideChange(prevIndex);
   };
 
-  const goToSlide = (index:any) => {
+  const goToSlide = (index:number) => {
     handleSlideChange(index);
   };
 

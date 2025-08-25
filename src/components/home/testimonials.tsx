@@ -94,7 +94,7 @@ const Testimonials = () => {
                   }
                 )}
               >
-                <p className="text-7xl inter mb-2 italic">"</p>
+                <p className="text-7xl inter mb-2 italic">&quot;</p>
                 <h3 className="helvetica-bold text-2xl mb-5">{t.title}</h3>
                 <p className="text-lg poppins-light text-gray-600 mb-8">
                   {t.content}

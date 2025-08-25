@@ -1,5 +1,5 @@
 "use client";
-import { ShoppingCart, ChevronDown, Phone, Mail } from "lucide-react";
+import { ChevronDown, Phone, Mail } from "lucide-react";
 import React, { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
