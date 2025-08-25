@@ -1,9 +1,13 @@
-
+import OurCollections from "@/components/home/collections";
+import HospitalitySlider from "@/components/home/hospitality-slider";
+import LogoSliders from "@/components/home/logo-sliders";
 
 export default function Home() {
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <h3>Barbin Comming soon.</h3>
+    <div className="flex flex-col gap-5">
+      <HospitalitySlider />
+      <OurCollections />
+      <LogoSliders /> 
     </div>
   );
 }
