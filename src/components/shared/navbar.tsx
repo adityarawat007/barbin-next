@@ -8,7 +8,7 @@ import { db } from "../firebase";
 import Image from "next/image";
 
 // Helper function for URL slug conversion
-const createCategorySlug = (category:string) => {
+const createCategorySlug = (category: string) => {
   return category
     .toLowerCase()
     .replace(/\//g, "-") // Convert slashes to hyphens
@@ -110,8 +110,17 @@ const Navbar = () => {
       <div className="max-w-screen-xl lg:max-w-[95%] h-full relative flex items-center justify-between mx-auto py-4">
         {/* Logo - centered in mobile/tablet, left in desktop */}
         <div className="flex absolute left-1/2 -translate-x-1/2 lg:relative lg:left-auto lg:translate-x-0 lg:justify-start">
-          <Link href="/" className="flex items-center space-x-2">
-            <Image src="/Logonav.png" fill alt="Logo" className="h-20 lg:h-24" />
+          <Link href="/" className="flex items-center space-x-2 h-20 lg:h-24">
+            <div className="relative h-full w-[145px] lg:w-[145px]">
+              <Image
+                src="/Logonav.png"
+                alt="Logo"
+                fill
+                className="object-contain"
+                sizes="(max-width: 1024px) 120px, 145px"
+                priority
+              />
+            </div>
           </Link>
         </div>
 
