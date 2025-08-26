@@ -78,12 +78,11 @@ const AllCategories = () => {
               className="rounded-lg overflow-hidden shadow-sm hover:shadow-lg transition-shadow duration-300 cursor-pointer bg-white"
             >
               <div className="h-48 md:h-48 w-full overflow-hidden flex justify-center items-center relative">
-                {/* ✅ Next.js Image (optimized, responsive, covers area) */}
                 <Image
                   src={image}
                   alt={category}
                   fill
-                  className="object-cover hover:scale-105 transition-transform duration-500"
+                  className="object-contain hover:scale-105 transition-transform duration-500"
                   sizes="(max-width: 768px) 100vw, 25vw"
                 />
               </div>
