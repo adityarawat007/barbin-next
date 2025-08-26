@@ -256,7 +256,7 @@ const Navbar = () => {
           <Link href="/contact">
             <button
               onClick={handleLinkClick}
-              className="px-5 py-2 border poppins-semi border-black rounded-full text-sm hover:bg-black hover:text-white transition"
+              className="px-5 py-2 border cursor-pointer poppins-semi border-black rounded-full text-sm hover:bg-black hover:text-white transition"
             >
               Request a Quote
             </button>
