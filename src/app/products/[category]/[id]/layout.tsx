@@ -1,5 +1,5 @@
 import { db } from "@/components/firebase";
-import { collection, getDocs, query, DocumentData } from "firebase/firestore";
+import { collection, getDocs, query} from "firebase/firestore";
 import type { Metadata } from "next";
 
 // ---------------- Types ---------------- //
@@ -64,18 +64,19 @@ export async function generateMetadata({
     });
 
     if (product !== null) {
+      const safeProduct = product as Product;
       return {
-        title: `${product.name} | Barbin Furnitures`,
-        description: `High-quality ${product.category?.toLowerCase()} - ${product.name}. Premium furniture for hospitality and commercial spaces.`,
+        title: `${safeProduct.name} | Barbin Furnitures`,
+        description: `High-quality ${safeProduct.category?.toLowerCase()} - ${safeProduct.name}. Premium furniture for hospitality and commercial spaces.`,
         alternates: {
           canonical: `https://www.barbinfurniture.com.au/products/${createProductSlug(
-            product.category
-          )}/${createProductSlug(product.name)}`,
+            safeProduct.category
+          )}/${createProductSlug(safeProduct.name)}`,
         },
         openGraph: {
-          title: `${product.name} | Barbin Furnitures`,
-          description: `High-quality ${product.category?.toLowerCase()} - ${product.name}`,
-          images: product.images?.[0] ? [{ url: product.images[0] }] : [],
+          title: `${safeProduct.name} | Barbin Furnitures`,
+          description: `High-quality ${safeProduct.category?.toLowerCase()} - ${safeProduct.name}`,
+          images: safeProduct.images?.[0] ? [{ url: safeProduct.images[0] }] : [],
         },
       };
     }
