@@ -4,7 +4,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import type { ChangeEvent, MouseEvent } from 'react';
 import type { QueryDocumentSnapshot, DocumentData } from 'firebase/firestore';
 import Link from 'next/link';
-import { useRouter, useSearchParams } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import { collection, getDocs, orderBy, query, limit, startAfter, where } from 'firebase/firestore';
 import { db } from "@/components/firebase"; 
 import { ChevronsDown, ChevronsUp, Search } from 'lucide-react';
@@ -42,7 +42,6 @@ const createProductSlug = (productName: string) => {
 
 const ProductPage = () => {
   const router = useRouter();
-  const searchParams = useSearchParams();
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
   const [products, setProducts] = useState<Product[]>([]);
   const [lastDoc, setLastDoc] = useState<QueryDocumentSnapshot<DocumentData> | null>(null);

@@ -37,9 +37,12 @@ const createProductSlug = (productName: string) => {
 export async function generateMetadata({
   params,
 }: {
-  params: { category: string; id: string };
+  params: Promise<{ category: string; id: string }>;
 }): Promise<Metadata> {
   try {
+    // Await params before using its properties
+    const resolvedParams = await params;
+    
     const productRef = collection(db, "products");
     const allProductsQuery = query(productRef);
     const allProductsSnapshot = await getDocs(allProductsQuery);
@@ -54,25 +57,25 @@ export async function generateMetadata({
 
       const productSlug = createProductSlug(data.name);
 
-      if (productSlug === params.id?.trim()) {
+      if (productSlug === resolvedParams.id?.trim()) {
         const { id: _id, ...restData } = data;
         product = { id: doc.id, ...restData } as Product;
       }
     });
 
-    if (product) {
+    if (product !== null) {
       return {
-        title: `${(product as Product).name} | Barbin Furnitures`,
-        description: `High-quality ${(product as Product).category?.toLowerCase()} - ${(product as Product).name}. Premium furniture for hospitality and commercial spaces.`,
+        title: `${product.name} | Barbin Furnitures`,
+        description: `High-quality ${product.category?.toLowerCase()} - ${product.name}. Premium furniture for hospitality and commercial spaces.`,
         alternates: {
           canonical: `https://www.barbinfurniture.com.au/products/${createProductSlug(
-            (product as Product).category
-          )}/${createProductSlug((product as Product).name)}`,
+            product.category
+          )}/${createProductSlug(product.name)}`,
         },
         openGraph: {
-          title: `${(product as Product).name} | Barbin Furnitures`,
-          description: `High-quality ${(product as Product).category?.toLowerCase()} - ${(product as Product).name}`,
-          images: (product as Product).images?.[0] ? [{ url: (product as Product).images[0] }] : [],
+          title: `${product.name} | Barbin Furnitures`,
+          description: `High-quality ${product.category?.toLowerCase()} - ${product.name}`,
+          images: product.images?.[0] ? [{ url: product.images[0] }] : [],
         },
       };
     }

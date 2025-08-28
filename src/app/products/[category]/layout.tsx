@@ -1,4 +1,7 @@
-export async function generateMetadata({ params }: { params: { category: string } }) {
+export async function generateMetadata({ params }: { params: Promise<{ category: string }> }) {
+  // Await params before using its properties
+  const resolvedParams = await params;
+  
   // Helper function to parse category from slug
   const parseCategoryFromSlug = (slug: string) => {
     if (!slug) return null;
@@ -17,7 +20,7 @@ export async function generateMetadata({ params }: { params: { category: string 
       .replace(/\b\w/g, (l) => l.toUpperCase());
   };
 
-  const category = parseCategoryFromSlug(params.category);
+  const category = parseCategoryFromSlug(resolvedParams.category);
 
   return {
     title: category
@@ -26,7 +29,7 @@ export async function generateMetadata({ params }: { params: { category: string 
     description: category
       ? `Browse our premium ${category.toLowerCase()} collection. High-quality, durable furniture for hospitality and commercial spaces across Australia.`
       : "Browse our premium furniture collection for hospitality and commercial spaces.",
-    canonical: `https://www.barbinfurniture.com.au/products/${params.category}`,
+    canonical: `https://www.barbinfurniture.com.au/products/${resolvedParams.category}`,
     openGraph: {
       title: category
         ? `${category} | Barbin Furnitures`
