@@ -5,6 +5,7 @@ import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 import { db } from '../../components/firebase'; // adjust as needed
 import { Mail, Phone } from 'lucide-react';
 import Image from 'next/image';
+import { sendContactEmail } from '@/utils/emailService';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -27,47 +28,40 @@ const Contact = () => {
     }));
   };
 
-  const sendNotificationMail = async (data: any) => {
-    try {
-      const response = await fetch('https://barbinserver.anthillnetworks.com/send-email', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data),
-      });
-      if (!response.ok) throw new Error('Failed to send notification');
-      return true;
-    } catch (error) {
-      console.error('Notification error:', error);
-      return false;
-    }
-  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
     setSubmitStatus(null);
-
+  
     try {
       if (!formData.firstName || !formData.lastName || !formData.email || !formData.reason) {
         throw new Error('Please fill in all required fields');
       }
-
-      const docRef = await addDoc(collection(db, 'contactMessages'), {
+  
+      // Save to Firestore
+      await addDoc(collection(db, 'contactMessages'), {
         ...formData,
         createdAt: serverTimestamp(),
         status: 'new',
       });
-
-      const submissionData = {
-        ...formData,
-        createdAt: new Date().toISOString(),
-        status: 'pending',
-      };
-
-      console.log('Contact message submitted with ID: ', docRef.id);
-      await sendNotificationMail(submissionData);
+  
+      // Send email through API route
+      const { success, error } = await sendContactEmail({
+        firstName: formData.firstName,
+        lastName: formData.lastName,
+        phone: formData.phone,
+        email: formData.email,
+        message: formData.message,
+      });
+  
+      if (!success) {
+        throw new Error(error || 'Failed to send email');
+      }
+  
       setSubmitStatus('success');
-
+  
+      // Reset form
       setFormData({
         firstName: '',
         lastName: '',
@@ -83,6 +77,7 @@ const Contact = () => {
       setIsSubmitting(false);
     }
   };
+  
 
   return (
     <>

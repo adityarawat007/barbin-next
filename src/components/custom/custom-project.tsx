@@ -4,7 +4,7 @@ import React, { useState, useCallback } from 'react';
 import { Link as LinkIcon } from 'lucide-react';
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 import { db } from '../firebase';
-import { S3Client, PutObjectCommand } from '@aws-sdk/client-s3';
+import { sendCustomOrderEmail } from '@/utils/emailService';
 
 interface FormData {
   firstName: string;
@@ -22,44 +22,29 @@ const initialFormData: FormData = {
   projectDetails: '',
 };
 
-// 📦 Utility: Upload file to S3
-const uploadFileToS3 = async (file: File): Promise<string> => {
-  const s3Client = new S3Client({
-    region: 'ap-south-1',
-    credentials: {
-      accessKeyId: process.env.NEXT_PUBLIC_S3_KEY!, // ✅ Move to env file
-      secretAccessKey: process.env.NEXT_PUBLIC_S3_SECRET!,
-    },
-  });
-
-  const fileName = `uploads/${Date.now()}-${file.name}`;
-  const fileBuffer = await file.arrayBuffer();
-
-  const params = {
-    Bucket: 'niligiri-tourism',
-    Key: fileName,
-    Body: fileBuffer,
-    ContentType: file.type,
-    ACL: 'public-read',
-  };
-
-  await s3Client.send(new PutObjectCommand(params as any));
-  return `https://${params.Bucket}.s3.amazonaws.com/${fileName}`;
-};
-
-// 📧 Utility: Send email notification
-const sendNotificationMail = async (data: any) => {
+const uploadFileToCloudinary = async (file: File): Promise<string> => {
   try {
-    const response = await fetch('https://barbinserver.anthillnetworks.com/send-email-custom', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(data),
-    });
-    if (!response.ok) throw new Error('Failed to send notification');
-    return true;
+    const formData = new FormData();
+    formData.append('file', file);
+    formData.append('upload_preset', process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET!);
+    
+    const response = await fetch(
+      `https://api.cloudinary.com/v1_1/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload`,
+      {
+        method: 'POST',
+        body: formData,
+      }
+    );
+    
+    if (!response.ok) {
+      throw new Error(`Cloudinary upload failed: ${response.statusText}`);
+    }
+    
+    const data = await response.json();
+    return data.secure_url;
   } catch (error) {
-    console.error('Notification error:', error);
-    return false;
+    console.error('Cloudinary upload error:', error);
+    throw new Error(`Failed to upload file: ${error instanceof Error ? error.message : 'Unknown error'}`);
   }
 };
 
@@ -79,7 +64,20 @@ const CustomProjectForm = () => {
 
   const handleFileChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
-      setSelectedFile(e.target.files[0]);
+      const file = e.target.files[0];
+      
+      const allowedTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/webp', 'image/svg+xml'];
+      if (!allowedTypes.includes(file.type)) {
+        alert('Please select a valid image file (JPEG, PNG, GIF, WebP, or SVG)');
+        return;
+      }
+      
+      if (file.size > 5 * 1024 * 1024) {
+        alert('File size must be less than 5MB');
+        return;
+      }
+      
+      setSelectedFile(file);
     }
   }, []);
 
@@ -87,34 +85,39 @@ const CustomProjectForm = () => {
     e.preventDefault();
     setIsSubmitting(true);
     setSubmitStatus(null);
-
+  
     try {
       const { firstName, lastName, email, phone, projectDetails } = formData;
-
+  
       if (!firstName || !lastName || !email || !projectDetails) {
         throw new Error('Please fill in all required fields');
       }
-
+  
       let fileUrl = '';
       if (selectedFile) {
-        fileUrl = await uploadFileToS3(selectedFile);
+        fileUrl = await uploadFileToCloudinary(selectedFile);
       }
-
-      const submissionData = {
-        ...formData,
-        fileUrl,
-        createdAt: new Date().toISOString(),
-        status: 'pending',
-      };
-
+  
       await addDoc(collection(db, 'customOrders'), {
         ...formData,
         fileUrl,
         createdAt: serverTimestamp(),
         status: 'pending',
       });
-
-      await sendNotificationMail(submissionData);
+  
+      const { success, error } = await sendCustomOrderEmail({
+        firstName,
+        lastName,
+        email,
+        phone,
+        projectDetails,
+        fileUrl,
+      });
+  
+      if (!success) {
+        throw new Error(error || 'Failed to send custom order email');
+      }
+  
       setSubmitStatus('success');
       setFormData(initialFormData);
       setSelectedFile(null);
