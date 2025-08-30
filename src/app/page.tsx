@@ -9,8 +9,17 @@ import Testimonials from "@/components/home/testimonials";
 
 export const metadata: Metadata = {
   title: "Barbin Furniture - Trusted by Leading Venues",
-  description:
-    "Elevate your venue with Barbin Furniture's exquisite range.",
+  description: "Elevate your venue with Barbin Furniture's exquisite range.",
+  keywords: [
+    "Barbin Furnitures",
+    "hospitality furniture",  
+    "premium furniture",
+    "Australian furniture",
+    "commercial furniture",
+  ],
+  alternates: {
+    canonical: "https://www.barbinfurniture.com.au",
+  },
 };
 
 export default function Home() {

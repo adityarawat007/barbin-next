@@ -5,6 +5,17 @@ import Link from 'next/link'
 export const metadata: Metadata = {
   title: 'Portfolio - Barbin Furniture',
   description: 'Explore our portfolio showcasing bespoke furniture solutions for Australia’s finest venues. From luxurious hotels to elegant restaurants, see how we transform spaces with custom designs that blend style and functionality.',
+  keywords: [
+    "portfolio",
+    "Barbin Furnitures",
+    "hospitality furniture",
+    "premium furniture",
+    "Australian furniture",
+    "commercial furniture",
+  ],
+  alternates: {
+    canonical: "https://www.barbinfurniture.com.au/portfolio",
+  },
 }
 
 const Portfolio = () => {

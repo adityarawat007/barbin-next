@@ -5,6 +5,17 @@ import { Metadata } from "next/dist/lib/metadata/types/metadata-interface";
 export const metadata: Metadata = {
   title: 'Custom Projects - Barbin Furniture',
   description: 'Discover our custom furniture solutions designed for unique spaces. From concept to creation, we bring your vision to life with bespoke designs that reflect your style and functionality needs.',
+  keywords: [
+    "custom projects",
+    "Barbin Furnitures",
+    "hospitality furniture",
+    "premium furniture",
+    "Australian furniture",
+    "commercial furniture",
+  ],
+  alternates: {
+    canonical: "https://www.barbinfurniture.com.au/custom",
+  },
 }
 
 const Custom = () => {
