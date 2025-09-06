@@ -150,12 +150,12 @@ const About = () => {
           </p>
 
           {/* Example link using Next.js */}
-          <Link
+          {/* <Link
             href="/contact"
             className="text-[#C49A6C] underline underline-offset-4 font-semibold"
           >
             Get in touch →
-          </Link>
+          </Link> */}
         </div>
 
         {/* Images */}

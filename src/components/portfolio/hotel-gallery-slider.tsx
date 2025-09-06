@@ -177,8 +177,8 @@ const HotelGallerySlider = () => {
               <div className={`absolute inset-0 ${activeCard === index ? 'bg-black/40' : 'bg-black/20'}`} />
               {activeCard === index && (
                 <div className="absolute bottom-6 left-6 right-6 text-white">
-                  <h2 className="text-2xl font-bold mb-3">{card.title}</h2>
-                  <p className="text-sm leading-relaxed mb-4 max-w-md">{card.description}</p>
+                  <h2 className="text-2xl helvetica-bold mb-3">{card.title}</h2>
+                  <p className="text-sm poppins-semi leading-relaxed mb-4 max-w-md">{card.description}</p>
                 </div>
               )}
               <Link href="#" className={`absolute ${activeCard === index ? 'top-6 right-6' : 'top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2'} transition-all`}>
@@ -228,8 +228,8 @@ const HotelGallerySlider = () => {
               />
               <div className="absolute inset-0 bg-black/40" />
               <div className="absolute bottom-6 left-6 right-6 text-white">
-                <h2 className="text-2xl font-bold mb-3">{card.title}</h2>
-                <p className="text-sm leading-relaxed mb-4">{card.description}</p>
+                <h2 className="text-2xl helvetica-bold mb-3">{card.title}</h2>
+                <p className="text-sm poppins-light leading-relaxed mb-4">{card.description}</p>
               </div>
               <Link href="#" className="absolute top-6 right-6">
                 <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center">

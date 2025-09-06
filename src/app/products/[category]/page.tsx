@@ -96,6 +96,10 @@ export default function CategoryProducts() {
     null
   );
 
+  const filteredProducts = products.filter((product) =>
+    product?.name?.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   // Handle URL parameter changes
   useEffect(() => {
     const categoryFromURL = parseCategoryFromSlug(params.category);
@@ -355,6 +359,7 @@ export default function CategoryProducts() {
     }
   };
 
+
   // Loading state
   if (loading) {
     return (
@@ -479,10 +484,7 @@ export default function CategoryProducts() {
 
         {/* Products Grid */}
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-4 md:gap-6">
-          {products
-            .filter((product) =>
-              product.name?.toLowerCase().includes(searchTerm.toLowerCase())
-            )
+          {filteredProducts
             .map((product, idx) => (
               <Link
                 key={product.id}
@@ -520,7 +522,7 @@ export default function CategoryProducts() {
         </div>
 
         <div className="flex mt-5 w-full justify-end mb-4">
-          {products.length >= 8 && (
+          {filteredProducts.length >= 8 && (
             <div className="flex mt-5 w-full justify-end mb-4">
               <button
                 onClick={handleSkipToTop}
@@ -542,11 +544,11 @@ export default function CategoryProducts() {
         )}
 
         {/* No Products Message */}
-        {products.length === 0 && !loading && (
+        {filteredProducts.length === 0 && !loading && (
           <div className="text-center py-12">
             <p className="text-lg poppins-semi text-gray-600">
               No products found
-              {selectedCategory !== "All" ? ` in ${selectedCategory}` : ""}.
+              {selectedCategory !== "All" ? ` in ${selectedCategory}.` : "."}
             </p>
             {selectedCategory !== "All" && (
               <Link

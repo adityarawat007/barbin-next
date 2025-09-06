@@ -31,14 +31,14 @@ const Footer = () => {
 
               {isContactPage ? (
                 <Link href="/products">
-                  <button className="bg-[#3C2415] poppins-semi text-white px-8 py-3 rounded-full text-sm transition-all duration-300 transform hover:scale-105 shadow-lg flex items-center gap-2">
+                  <button className="bg-[#3C2415] cursor-pointer poppins-semi text-white px-8 py-3 rounded-full text-sm transition-all duration-300 transform hover:scale-105 shadow-lg flex items-center gap-2">
                     Explore our Range
                     <MoveUpRight className="w-4 h-4" />
                   </button>
                 </Link>
               ) : (
                 <Link href="/contact">
-                  <button className="bg-[#3C2415] poppins-semi text-white px-8 py-3 rounded-full text-sm transition-all duration-300 transform hover:scale-105 shadow-lg flex items-center gap-2">
+                  <button className="bg-[#3C2415] cursor-pointer poppins-semi text-white px-8 py-3 rounded-full text-sm transition-all duration-300 transform hover:scale-105 shadow-lg flex items-center gap-2">
                     Schedule a Consultation
                     <MoveUpRight className="w-4 h-4" />
                   </button>

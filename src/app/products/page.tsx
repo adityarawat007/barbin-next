@@ -62,6 +62,10 @@ const ProductPage = () => {
   const [dropdownVisible, setDropdownVisible] = useState<boolean>(false);
   const [searchTimeout, setSearchTimeout] = useState<NodeJS.Timeout | null>(null);
 
+  const filteredProducts = products.filter((product) =>
+    product?.name?.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   // Fetch categories and first batch of products
   useEffect(() => {
     const fetchProducts = async () => {
@@ -403,10 +407,7 @@ const ProductPage = () => {
 
         {/* Products Grid */}
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-4 md:gap-6">
-          {products
-            .filter(product =>
-              product.name?.toLowerCase().includes(searchTerm.toLowerCase())
-            ).map((product, idx) => (
+          {filteredProducts.map((product, idx) => (
               <Link
                 key={product.id}
                 href={`/products/${createProductSlug(product.category || '')}/${createProductSlug(product.name || '')}`}
@@ -441,7 +442,7 @@ const ProductPage = () => {
         </div>
 
         <div className="flex mt-5 w-full justify-end mb-4">
-          {products.length >= 8 && (
+          {filteredProducts.length >= 8 && (
             <div className="flex mt-5 w-full justify-end mb-4">
               <button
                 onClick={handleSkipToTop}
@@ -463,7 +464,7 @@ const ProductPage = () => {
         )}
 
         {/* No Products Message */}
-        {products.length === 0 && !loading && (
+        {filteredProducts.length === 0 && !loading && (
           <div className="text-center py-12">
             <p className="text-lg poppins-semi text-gray-600">
               No products found{selectedCategory !== 'All' ? ` in ${selectedCategory}` : ''}.

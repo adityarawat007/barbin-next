@@ -113,9 +113,9 @@ const toggleFAQ = (index: number) => {
         {/* FAQ Content */}
         {!loading && !error && (
           <div className="bg-white rounded-2xl border-2 p-3 md:p-10 border-gray-200">
-            <div className="px-6 mb-6">
-              <h3 className="text-2xl helvetica-bold text-[#3C2415]">FAQs</h3>
-            </div>
+          <div className="px-6">
+            <h3 className="text-2xl helvetica-bold text-[#3C2415]">FAQs</h3>
+          </div>
 
             <div className="divide-y divide-gray-200">
               {faqData.map((item, index) => (
