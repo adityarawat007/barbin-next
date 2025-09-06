@@ -3,7 +3,13 @@
 
 @font-face {
   font-family: "Helvetica";
-  src: url("/fonts/Helvetica.ttf") format("truetype");
+  src: url("../../public/fonts/Helvetica.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Helvetica-Bold";
+  src: url("../../public/fonts/Helvetica-Bold.ttf") format("truetype");
+  font-weight: 700;
 }
 
 body {
@@ -15,8 +21,9 @@ body {
   font-weight: 500;
 }
 .helvetica-bold {
-  font-family: "Helvetica", sans-serif;
+  font-family: "Helvetica-Bold", sans-serif;
   font-weight: 700;
+  font-synthesis: weight;
 }
 
 .inter {
