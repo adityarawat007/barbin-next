@@ -16,6 +16,9 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
+  icons: {
+    icon: "../../public/favicon.ico",
+  },
   openGraph: {
     title: "Barbin Furniture",
     description:
