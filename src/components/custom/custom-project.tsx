@@ -155,7 +155,7 @@ const CustomProjectForm = () => {
         Have a Custom Project in Mind?
       </h2>
 
-      <div className="bg-[#EEEEEE] p-8 rounded-lg">
+      <div className="bg-[#EEEEEE] p-7 sm:p-8 rounded-lg">
         <form onSubmit={handleSubmit}>
           {/* Status Message */}
           {submitStatus === "success" && (
@@ -254,7 +254,7 @@ const CustomProjectForm = () => {
             <button
               type="submit"
               disabled={isSubmitting}
-              className={`px-10 py-4 rounded-full poppins-light transition-colors ${
+              className={`px-10 py-4 rounded-full cursor-pointer poppins-light transition-colors ${
                 isSubmitting
                   ? "bg-gray-400 cursor-not-allowed"
                   : "bg-[#3C2415] text-white hover:bg-[#2a1a0e]"
