@@ -29,7 +29,7 @@ const LogoSliders = () => {
     },
     { src: "/7.png", link: "https://cobdengolf.com.au/", alt: "Logo" },
     { src: "/l8.png", link: "https://www.thepalacehotel.com.au", alt: "Logo" },
-    { src: "/l9.png", link: "http://www.ryehotel.com.au/", alt: "Logo" },
+    { src: "/l9.png", link: "https://www.ryehotel.com.au/", alt: "Logo" },
   ];
 
   // Create multiple sets for seamless looping
