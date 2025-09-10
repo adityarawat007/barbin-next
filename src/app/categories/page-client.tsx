@@ -66,9 +66,9 @@ const AllCategories = () => {
   return (
     <div className="w-full mb-16 mt-8">
       <div className="w-[90%] mx-auto px-4">
-        <h2 className="text-4xl md:text-5xl helvetica-bold text-center text-gray-800 mb-12">
+        <h1 className="text-4xl md:text-5xl helvetica-bold text-center text-gray-800 mb-12">
           All Categories
-        </h2>
+        </h1>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
           {categories.map(({ category, image }) => (

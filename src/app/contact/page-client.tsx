@@ -84,9 +84,9 @@ const Contact = () => {
       <section className="w-full px-4 py-12 flex flex-col md:flex-row items-center justify-center gap-12 max-w-7xl mx-auto">
         {/* Left Section */}
         <div className="md:w-1/2 md:text-left">
-          <h2 className="text-3xl md:text-5xl helvetica-bold mb-4">
+          <h1 className="text-3xl md:text-5xl helvetica-bold mb-4">
             Let&apos;s <span className="text-[#C98B4B]">Connect</span>
-          </h2>
+          </h1>
           <p className="text-gray-700 text-lg mb-6 poppins-light">
             For product information, custom inquiries, or to schedule a consultation, please get in touch.
           </p>
