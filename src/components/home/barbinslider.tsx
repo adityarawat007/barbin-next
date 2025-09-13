@@ -116,13 +116,13 @@ const BarbinSlider = () => {
               <div className="flex gap-2">
                 <button
                   onClick={prevSlide}
-                  className="w-10 h-10 rounded-full bg-white text-gray-800 shadow-lg hover:bg-gray-100 transition-colors duration-300 flex items-center justify-center"
+                  className="w-10 h-10 rounded-full cursor-pointer bg-white text-gray-800 shadow-lg hover:bg-gray-100 transition-colors duration-300 flex items-center justify-center"
                 >
                   <ChevronLeft className="w-5 h-5" />
                 </button>
                 <button
                   onClick={nextSlide}
-                  className="w-10 h-10 rounded-full bg-[#3C2415] text-white shadow-lg hover:bg-amber-950 transition-colors duration-300 flex items-center justify-center"
+                  className="w-10 h-10 rounded-full cursor-pointer bg-[#3C2415] text-white shadow-lg hover:bg-amber-950 transition-colors duration-300 flex items-center justify-center"
                 >
                   <ChevronRight className="w-5 h-5" />
                 </button>
