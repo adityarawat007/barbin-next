@@ -11,21 +11,21 @@ const slides = [
     subtitle: "Established & Reliable.",
     description:
       "Over 30 years of trusted service to the Australian hospitality industry.",
-    image: "/man3.png",
+    image: "/owner.png",
   },
   {
     title: "The Barbin Way",
     subtitle: "Trusted & Professional.",
     description:
       "Delivering excellence in every project with industry-leading standards.",
-    image: "/man3.png",
+    image: "/owner.png",
   },
   {
     title: "The Barbin Promise",
     subtitle: "Quality & Commitment.",
     description:
       "We're committed to providing high-quality service you can rely on.",
-    image: "/man3.png",
+    image: "/owner.png",
   },
 ];
 
@@ -102,7 +102,7 @@ const BarbinSlider = () => {
             {/* Right Section - Image and Navigation */}
             <div className="w-[80%] lg:w-md flex items-center relative justify-between lg:justify-start gap-4">
               <div className="bg-[#563827] w-[275px] lg:w-[360px] h-[280px]  rounded-xl">
-                <div className="rounded-xl h-[435px] md:w-[90%] md:h-[420px] lg:h-[500px]  lg:w-full  -top-[50%] lg:-top-[75%]  absolute  md:-left-[12%] lg:-left-[14%]">
+                <div className="rounded-xl h-[435px] md:w-[90%] md:h-[420px] lg:h-[500px]  lg:w-full  -top-[50%] lg:-top-[79%]  absolute  md:-left-[12%] lg:-left-[14%]">
                   <Image
                     src={slide.image}
                     alt="Professional worker"
@@ -192,11 +192,11 @@ const BarbinSlider = () => {
                 <div className="bg-[#563827] w-[100%] h-[140px] relative rounded-xl ">
                   <div className="rounded-md w-[100%] object-cover   h-[150%]  absolute right-1 bottom-0  z-50">
                     <Image
-                      src="/man3.png"
+                      src="/owner.png"
                       loading="lazy"
                       alt="Professional worker"
                       fill
-                      className="object-cover"
+                      className="object-contain"
                     />
                   </div>
                 </div>
