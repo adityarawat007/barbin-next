@@ -50,7 +50,7 @@ const HotelGallerySlider = () => {
       const fallback: PortfolioItem[][] = [[
         {
           id: 1,
-          title: 'The Royal Hotel, Richmond',
+          title: 'Royal Hotel Ferntree Gully',
           description: 'Supplied our durable Rochester dining chairs and custom booth seating...',
           imageUrl: 'https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=800&h=600&fit=crop',
         },
