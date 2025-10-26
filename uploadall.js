@@ -11,7 +11,7 @@ const { v2: cloudinary } = require("cloudinary");
 const admin = require("firebase-admin");
 
 // Initialize Firebase Admin
-const serviceAccount = require("./barbin-furniture-firebase-adminsdk-fbsvc-034903bd51.json");
+const serviceAccount = require("./serviceAccountKey.json");
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),

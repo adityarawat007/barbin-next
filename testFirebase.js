@@ -11,7 +11,7 @@ console.log("=".repeat(50));
 
 try {
   // Initialize Firebase Admin
-  const serviceAccount = require("./barbin-furniture-firebase-adminsdk-fbsvc-034903bd51.json");
+  const serviceAccount = require("./serviceAccountKey.json");
 
   console.log("✓ Service account key loaded");
   console.log(`  - Project ID: ${serviceAccount.project_id}`);
