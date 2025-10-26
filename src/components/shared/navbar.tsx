@@ -40,6 +40,7 @@ const Navbar = () => {
     "Sofa",
     "Booth Seating",
     "Function Furniture",
+    "In Stock",
   ];
 
   // Fetch categories from Firebase

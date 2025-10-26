@@ -359,7 +359,6 @@ export default function CategoryProducts() {
     }
   };
 
-
   // Loading state
   if (loading) {
     return (
@@ -484,41 +483,40 @@ export default function CategoryProducts() {
 
         {/* Products Grid */}
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-4 md:gap-6">
-          {filteredProducts
-            .map((product, idx) => (
-              <Link
-                key={product.id}
-                href={`/products/${createProductSlug(
-                  product.category
-                )}/${createProductSlug(product.name)}`}
-                className=""
+          {filteredProducts.map((product, idx) => (
+            <Link
+              key={product.id}
+              href={`/products/${createProductSlug(
+                product.category
+              )}/${createProductSlug(product.name)}`}
+              className=""
+            >
+              <div
+                className="aspect-square"
+                ref={idx === products.length - 1 ? bottomRef : null}
               >
-                <div
-                  className="aspect-square"
-                  ref={idx === products.length - 1 ? bottomRef : null}
-                >
-                  <Image
-                    src={product.images?.[0] || product.image || "/chair.jpg"}
-                    alt={product.name}
-                    width={300}
-                    height={300}
-                    className="w-fit h-full rounded-xl hover:scale-105 transition-all duration-300"
-                    loading="lazy"
-                    onError={() => {}} // Next.js Image does not support onError for fallback, so leave empty
-                  />
+                <Image
+                  src={product.images?.[0] || product.image || "/chair.jpg"}
+                  alt={product.name}
+                  width={300}
+                  height={300}
+                  className="w-fit h-full rounded-xl hover:scale-105 transition-all duration-300"
+                  loading="lazy"
+                  onError={() => {}} // Next.js Image does not support onError for fallback, so leave empty
+                />
+              </div>
+              <div className="px-2 py-3">
+                <div className="flex w-full justify-between items-start">
+                  <h3 className="text-sm md:text-base poppins-semi text-gray-800 line-clamp-2">
+                    {product.name}
+                  </h3>
                 </div>
-                <div className="px-2 py-3">
-                  <div className="flex w-full justify-between items-start">
-                    <h3 className="text-sm md:text-base poppins-semi text-gray-800 line-clamp-2">
-                      {product.name}
-                    </h3>
-                  </div>
-                  <p className="text-xs poppins-light text-gray-500 mt-1">
-                    {product.category}
-                  </p>
-                </div>
-              </Link>
-            ))}
+                <p className="text-xs poppins-light text-gray-500 mt-1">
+                  {product.category}
+                </p>
+              </div>
+            </Link>
+          ))}
         </div>
 
         <div className="flex mt-5 w-full justify-end mb-4">

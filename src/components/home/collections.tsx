@@ -5,7 +5,6 @@ import Link from "next/link";
 import Image from "next/image";
 
 const OurCollections = () => {
-
   // Helper function for category slug
   const createCategorySlug = (category: string) => {
     return category
@@ -48,6 +47,14 @@ const OurCollections = () => {
       title: "Bar Stools Collection",
       image: "barstool.JPG", // Replace with actual image path
       path: "/products/barstool",
+    },
+    {
+      id: 5,
+      category: "In-Stock",
+      categoryId: "In-Stock",
+      title: "Quick Turnaround Collection",
+      image: "Albachair.JPEG", // Replace with actual image path
+      path: "/products/in-stock",
     },
   ];
 
@@ -99,7 +106,7 @@ const OurCollections = () => {
             </div>
           </div>
           {/* Desktop grid */}
-          <div className="hidden md:grid grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+          <div className="hidden md:grid grid-cols-2 lg:grid-cols-5 gap-6 mb-12">
             {collections.map((collection) => (
               <Link
                 href={`/products/${createCategorySlug(collection.categoryId)}`}
