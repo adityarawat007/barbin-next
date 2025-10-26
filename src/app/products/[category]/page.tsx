@@ -500,7 +500,7 @@ export default function CategoryProducts() {
                   alt={product.name}
                   width={300}
                   height={300}
-                  className="w-fit h-full rounded-xl hover:scale-105 transition-all duration-300"
+                  className="w-fit object-contain h-full rounded-xl hover:scale-105 transition-all duration-300"
                   loading="lazy"
                   onError={() => {}} // Next.js Image does not support onError for fallback, so leave empty
                 />

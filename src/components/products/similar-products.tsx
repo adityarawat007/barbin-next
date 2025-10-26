@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import Link from "next/link";
 import { collection, getDocs, query, where, limit } from "firebase/firestore";
-import { db } from "@/components/firebase" 
+import { db } from "@/components/firebase";
 
 // Helper function for product slug
 const createProductSlug = (productName: string) => {
@@ -72,10 +72,30 @@ const SimilarProducts: React.FC<SimilarProductsProps> = ({ id, category }) => {
 
         // Fallback to sample products if Firebase fails
         setProducts([
-          { id: "fallback1", name: "Beliza Chair", price: 100, image: "/chair.jpg" },
-          { id: "fallback2", name: "Butterfly Chair", price: 100, image: "/chair.jpg" },
-          { id: "fallback3", name: "Guam Chair", price: 100, image: "/chair.jpg" },
-          { id: "fallback4", name: "Mesh Chair", price: 100, image: "/chair.jpg" },
+          {
+            id: "fallback1",
+            name: "Beliza Chair",
+            price: 100,
+            image: "/chair.jpg",
+          },
+          {
+            id: "fallback2",
+            name: "Butterfly Chair",
+            price: 100,
+            image: "/chair.jpg",
+          },
+          {
+            id: "fallback3",
+            name: "Guam Chair",
+            price: 100,
+            image: "/chair.jpg",
+          },
+          {
+            id: "fallback4",
+            name: "Mesh Chair",
+            price: 100,
+            image: "/chair.jpg",
+          },
         ]);
       } finally {
         setLoading(false);
@@ -89,7 +109,8 @@ const SimilarProducts: React.FC<SimilarProductsProps> = ({ id, category }) => {
   const totalSlides = Math.ceil(products.length / itemsPerSlide);
 
   const nextSlide = () => setCurrentSlide((prev) => (prev + 1) % totalSlides);
-  const prevSlide = () => setCurrentSlide((prev) => (prev - 1 + totalSlides) % totalSlides);
+  const prevSlide = () =>
+    setCurrentSlide((prev) => (prev - 1 + totalSlides) % totalSlides);
 
   const getCurrentSlideProducts = () => {
     const startIndex = currentSlide * itemsPerSlide;
@@ -120,7 +141,9 @@ const SimilarProducts: React.FC<SimilarProductsProps> = ({ id, category }) => {
           <h2 className="text-2xl md:text-3xl helvetica-bold text-center mb-8">
             <span className="text-[#c79f73]">Products</span> you may like
           </h2>
-          <p className="text-center text-gray-600 poppins-light">Unable to load similar products</p>
+          <p className="text-center text-gray-600 poppins-light">
+            Unable to load similar products
+          </p>
         </div>
       </div>
     );
@@ -133,7 +156,9 @@ const SimilarProducts: React.FC<SimilarProductsProps> = ({ id, category }) => {
           <h2 className="text-2xl md:text-3xl helvetica-bold text-center mb-8">
             <span className="text-[#c79f73]">Products</span> you may like
           </h2>
-          <p className="text-center text-gray-600 poppins-light">No similar products found in this category</p>
+          <p className="text-center text-gray-600 poppins-light">
+            No similar products found in this category
+          </p>
         </div>
       </div>
     );
@@ -153,17 +178,25 @@ const SimilarProducts: React.FC<SimilarProductsProps> = ({ id, category }) => {
               {products.map((product) => (
                 <Link
                   key={product.id}
-                  href={`/products/${createProductSlug(product.category || "")}/${createProductSlug(product.name)}`}
+                  href={`/products/${createProductSlug(
+                    product.category || ""
+                  )}/${createProductSlug(product.name)}`}
                   className="flex flex-col items-center w-40"
                 >
                   <div className="overflow-hidden w-40 rounded-lg border border-gray-200 mb-3 hover:shadow-lg transition-shadow duration-300">
                     <img
-                      src={product.images?.[0] || product.image || "/placeholder.png"}
+                      src={
+                        product.images?.[0] ||
+                        product.image ||
+                        "/placeholder.png"
+                      }
                       alt={product.name}
-                      className="w-fit h-40 hover:scale-105 transition-transform duration-500"
+                      className="w-fit h-40 hover:scale-105 object-contain transition-transform duration-500"
                     />
                   </div>
-                  <h3 className="text-sm poppins-bold text-center">{product.name}</h3>
+                  <h3 className="text-sm poppins-bold text-center">
+                    {product.name}
+                  </h3>
                 </Link>
               ))}
             </div>
@@ -174,18 +207,24 @@ const SimilarProducts: React.FC<SimilarProductsProps> = ({ id, category }) => {
             {getCurrentSlideProducts().map((product) => (
               <Link
                 key={product.id}
-                href={`/products/${createProductSlug(product.category || "")}/${createProductSlug(product.name)}`}
+                href={`/products/${createProductSlug(
+                  product.category || ""
+                )}/${createProductSlug(product.name)}`}
                 className="rounded-2xl overflow-hidden transition-transform duration-300 hover:scale-105 cursor-pointer w-48 h-64"
               >
                 <div className="w-full flex justify-center h-44">
                   <img
-                    src={product.images?.[0] || product.image || "/placeholder.png"}
+                    src={
+                      product.images?.[0] || product.image || "/placeholder.png"
+                    }
                     alt={product.name}
-                    className="w-fit h-full rounded-xl"
+                    className="w-fit h-full object-contain rounded-xl"
                   />
                 </div>
                 <div className="px-2 py-2">
-                  <h3 className="text-sm poppins-bold truncate text-center">{product.name}</h3>
+                  <h3 className="text-sm poppins-bold truncate text-center">
+                    {product.name}
+                  </h3>
                 </div>
               </Link>
             ))}
@@ -207,7 +246,9 @@ const SimilarProducts: React.FC<SimilarProductsProps> = ({ id, category }) => {
                     key={index}
                     onClick={() => setCurrentSlide(index)}
                     className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                      index === currentSlide ? "bg-[#3C2415] w-10" : "bg-gray-300 hover:bg-gray-400"
+                      index === currentSlide
+                        ? "bg-[#3C2415] w-10"
+                        : "bg-gray-300 hover:bg-gray-400"
                     }`}
                   />
                 ))}
