@@ -11,7 +11,7 @@ const slides = [
     subtitle: "Established & Reliable.",
     description:
       "Over 30 years of trusted service to the Australian hospitality industry.",
-    image: "/owne.png",
+    image: "/owner.png",
   },
   {
     title: "The Barbin Way",
