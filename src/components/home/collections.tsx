@@ -53,7 +53,7 @@ const OurCollections = () => {
       category: "In-Stock",
       categoryId: "In-Stock",
       title: "Quick Turnaround Collection",
-      image: "Albachair.JPEG", // Replace with actual image path
+      image: "stool.jpg", // Replace with actual image path
       path: "/products/in-stock",
     },
   ];
