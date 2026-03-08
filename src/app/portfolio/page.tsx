@@ -1,4 +1,5 @@
 import HotelGallerySlider from '@/components/portfolio/hotel-gallery-slider'
+import HotelGridSlider from '@/components/portfolio/hotel-grid-slider'
 import { Metadata } from 'next'
 import Link from 'next/link'
 
@@ -33,7 +34,8 @@ const Portfolio = () => {
                </Link>
             </div>
         </div>
-        <HotelGallerySlider/>
+        {/* <HotelGallerySlider/> */}
+        <HotelGridSlider/>
 
     </div>
     </>
