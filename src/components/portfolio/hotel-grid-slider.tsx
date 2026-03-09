@@ -23,7 +23,6 @@ const HOTELS: Hotel[] = [
       "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=600&h=400&fit=crop",
       "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=600&h=400&fit=crop",
       "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=600&h=400&fit=crop",
-      "https://images.unsplash.com/photo-1544148103-0773bf10c330?w=600&h=400&fit=crop",
       "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&h=400&fit=crop",
     ],
   },
@@ -124,7 +123,7 @@ const HotelGridSlider = () => {
                 key={hotel.id}
                 type="button"
                 onClick={() => setSelectedId(hotel.id)}
-                className={`text-left p-4 md:p-5 rounded-xl transition-colors duration-200 ${
+                className={`text-left p-4 md:p-5 rounded-xl transition-colors cursor-pointer duration-200 ${
                   isSelected
                     ? "bg-[#3C2415] text-white"
                     : "bg-gray-50 text-gray-800 hover:bg-gray-100 border border-[#3440541A]"
@@ -139,9 +138,9 @@ const HotelGridSlider = () => {
                       </p>
                     )}
                   </div>
-                  {isSelected && (
-                    <ArrowRight className="w-5 h-5 flex-shrink-0 text-[#E0CBB0]" />
-                  )}
+                  <ArrowRight
+                    className={`w-5 h-5 flex-shrink-0 ${isSelected ? "text-[#E0CBB0]" : "text-gray-800"}`}
+                  />
                 </div>
               </button>
             );
