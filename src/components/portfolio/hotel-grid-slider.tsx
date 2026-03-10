@@ -18,12 +18,14 @@ const HOTELS: Hotel[] = [
     description:
       "Supplied our durable Rochester dining chairs and custom booth seating to create a timeless, inviting atmosphere.",
     images: [
-      "https://images.unsplash.com/photo-1582719508461-905c673771fd?w=800&h=600&fit=crop",
-      "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=600&h=400&fit=crop",
-      "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=600&h=400&fit=crop",
-      "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=600&h=400&fit=crop",
-      "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=600&h=400&fit=crop",
-      "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&h=400&fit=crop",
+      "https://res.cloudinary.com/dq8juae7e/image/upload/v1773125299/AimeeHyde_BP-Royal-FTG_WEBRES_13_op4nnt.jpg",
+      "https://res.cloudinary.com/dq8juae7e/image/upload/v1773125300/AimeeHyde_BP-Royal-FTG_WEBRES_18_wxrmyi.jpg",
+      "https://res.cloudinary.com/dq8juae7e/image/upload/v1773125301/AimeeHyde_BP-Royal-FTG_WEBRES_65_njfxvx.jpg",
+      "https://res.cloudinary.com/dq8juae7e/image/upload/v1773125302/AimeeHyde_BP-Royal-FTG_WEBRES_15_msdljm.jpg",
+      "https://res.cloudinary.com/dq8juae7e/image/upload/v1773125303/AimeeHyde_BP-Royal-FTG_WEBRES_21_iz3gct.jpg",
+      "https://res.cloudinary.com/dq8juae7e/image/upload/v1773125301/AimeeHyde_BP-Royal-FTG_WEBRES_65_njfxvx.jpg",
+      "https://res.cloudinary.com/dq8juae7e/image/upload/v1773125304/AimeeHyde_BP-Royal-FTG_WEBRES_45_kllfob.jpg",
+      "https://res.cloudinary.com/dq8juae7e/image/upload/v1773125304/AimeeHyde_BP-Royal-FTG_WEBRES_20_lkiqcj.jpg",
     ],
   },
   {
@@ -32,14 +34,13 @@ const HOTELS: Hotel[] = [
     description:
       "Contemporary furniture solutions that blend comfort with sophisticated design for upscale dining.",
     images: [
-      "https://images.unsplash.com/photo-1564501049412-61c2a3083791?w=800&h=600&fit=crop",
-      "https://images.unsplash.com/photo-1578681994506-b8f463449011?w=600&h=400&fit=crop",
-      "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=600&h=400&fit=crop",
-      "https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=600&h=400&fit=crop",
-      "https://images.unsplash.com/photo-1590490360182-c33d57733427?w=600&h=400&fit=crop",
-      "https://images.unsplash.com/photo-1445019980597-93fa8acb246c?w=600&h=400&fit=crop",
-      "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=600&h=400&fit=crop",
-      "https://images.unsplash.com/photo-1566665797739-1674de7a421a?w=600&h=400&fit=crop",
+      "https://res.cloudinary.com/dq8juae7e/image/upload/v1773125751/AimeeHyde_Palace-Hotel_WEB-RES_10_fhkr7b.jpg",
+      "https://res.cloudinary.com/dq8juae7e/image/upload/v1773125752/AimeeHyde_Palace-Hotel_WEB-RES_6_x8h9sq.jpg",
+      "https://res.cloudinary.com/dq8juae7e/image/upload/v1773125752/AimeeHyde_Palace-Hotel_WEB-RES_21_mmdimv.jpg",
+      "https://res.cloudinary.com/dq8juae7e/image/upload/v1773125753/AimeeHyde_Palace-Hotel_WEB-RES_17_kf8pbt.jpg",
+      "https://res.cloudinary.com/dq8juae7e/image/upload/v1773125753/AimeeHyde_Palace-Hotel_WEB-RES_34_sek9by.jpg",
+      "https://res.cloudinary.com/dq8juae7e/image/upload/v1773125752/AimeeHyde_Palace-Hotel_WEB-RES_14_x4nwbw.jpg",
+      "https://res.cloudinary.com/dq8juae7e/image/upload/v1773125755/AimeeHyde_Palace-Hotel_WEB-RES_42_juizw5.jpg",
     ],
   },
   {
