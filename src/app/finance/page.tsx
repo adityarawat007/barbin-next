@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import { GearedFinanceCalculator } from "@/components/finance/geared-finance-calculator";
 import Image from "next/image";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Finance - Barbin Furniture",
@@ -37,7 +38,9 @@ const Finance = () => {
               <div className="px-6 sm:px-10 md:px-14 py-8 max-w-4xl">
                 <h1 className="text-white helvetica-bold leading-tight text-3xl sm:text-4xl md:text-5xl lg:text-6xl">
                   We provide you with the{" "}
-                  <span className="text-[#C49A6C]">Best Hospitality Finance</span>{" "}
+                  <span className="text-[#C49A6C]">
+                    Best Hospitality Finance
+                  </span>{" "}
                   options in Australia.
                 </h1>
               </div>
@@ -47,17 +50,48 @@ const Finance = () => {
       </section>
 
       <section className="px-4 lg:px-8">
-        <div className="max-w-6xl mx-auto flex flex-col gap-6">
-          <div className="gap-2 flex flex-col">
-            <h2 className="text-3xl font-bold text-black">
-              Use our calculator to get started
-            </h2>
-            <p className=" text-lg text-[#3C2F2FB2]/70">
-              Let's calculate your monthly or weekly repayments and find a
-              finance solution customised to you.
-            </p>
+        <div className="max-w-6xl mx-auto flex items-center justify-center flex-col md:gap-12 gap-8">
+          {/* Geared Finance intro block */}
+          <div className="flex flex-col gap-6">
+            {/* Logo + label row */}
+            <div className="flex items-center gap-3">
+              <Image
+                src="/geared-logo.png"
+                alt="Geared Finance Logo"
+                className=" filter brightness-0 "
+                width={300}
+                height={300}
+              />
+            </div>
+
+            {/* Heading + body copy */}
+            <div className="max-w-4xl space-y-4">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-[#1F2933]">
+                Simple, Flexible Equipment Finance Now Available.
+              </h2>
+              <p className="text-sm sm:text-base md:text-lg text-[#4B5563] leading-relaxed">
+                Looking to upgrade or purchase new equipment for your business?
+                We&apos;ve partnered with Geared Finance, a specialist
+                commercial lender, to offer flexible equipment finance options —
+                helping you get the gear you need without the upfront cash flow
+                hit.
+              </p>
+            </div>
+
+            {/* CTA button */}
+            <div>
+              <Link href="/contact">
+                <button
+                  type="button"
+                  className="inline-flex cursor-pointer items-center justify-center px-6 py-3 rounded-full bg-[#8B3A2A] hover:bg-[#6f2e21] text-white text-sm md:text-base font-semibold shadow-sm transition-colors"
+                >
+                  Request a Callback
+                </button>
+              </Link>
+            </div>
           </div>
 
+          {/* Calculator */}
           <GearedFinanceCalculator />
         </div>
       </section>
