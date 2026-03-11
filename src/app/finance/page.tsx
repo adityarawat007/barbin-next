@@ -80,7 +80,7 @@ const Finance = () => {
 
             {/* CTA button */}
             <div>
-              <Link href="/contact">
+              <Link target="_blank" href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ0ubfX1u95dyh_B-4nwaPGDdsXekYqYr8qk6wSgjefTgCuJZ0svbyy9rYl5JcokOQZ1VhGcv_Ti">
                 <button
                   type="button"
                   className="inline-flex cursor-pointer items-center justify-center px-6 py-3 rounded-full bg-[#8B3A2A] hover:bg-[#6f2e21] text-white text-sm md:text-base font-semibold shadow-sm transition-colors"

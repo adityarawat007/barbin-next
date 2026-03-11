@@ -45,16 +45,18 @@ const HOTELS: Hotel[] = [
   },
   {
     id: "brighton",
-    name: "Brighton Beach Hotel",
+    name: "The Bounday Hotel",
     description:
       "Premium upholstered chairs and custom banquettes crafted for durability and style.",
     images: [
-      "https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?w=800&h=600&fit=crop",
-      "https://images.unsplash.com/photo-1559329007-40df8a9345d8?w=600&h=400&fit=crop",
-      "https://images.unsplash.com/photo-1596436889106-be35e843f974?w=600&h=400&fit=crop",
-      "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&h=400&fit=crop",
-      "https://images.unsplash.com/photo-1514933651103-005eec06c04b?w=600&h=400&fit=crop",
-      "https://images.unsplash.com/photo-1578681994506-b8f463449011?w=600&h=400&fit=crop",
+      "https://res.cloudinary.com/dq8juae7e/image/upload/v1773206075/b10_e35bky.jpg",
+      "https://res.cloudinary.com/dq8juae7e/image/upload/v1773206075/b7_jgsdar.jpg",
+      "https://res.cloudinary.com/dq8juae7e/image/upload/v1773206075/b6_sejb8u.jpg",
+      "https://res.cloudinary.com/dq8juae7e/image/upload/v1773206075/b9_l4tv1l.jpg",
+      "https://res.cloudinary.com/dq8juae7e/image/upload/v1773206075/b8_ufrcgl.jpg",
+      "https://res.cloudinary.com/dq8juae7e/image/upload/v1773206074/b2_pgnxar.jpg",
+      "https://res.cloudinary.com/dq8juae7e/image/upload/v1773206074/b5_ysvhlf.jpg",
+      "https://res.cloudinary.com/dq8juae7e/image/upload/v1773206074/b1_ko6vws.jpg",
     ],
   },
 ];
@@ -215,7 +217,7 @@ const HotelGridSlider = () => {
                 e.stopPropagation();
                 closeModal();
               }}
-              className="absolute top-0 right-0 w-10 h-10 md:w-12 md:h-12 rounded-full bg-white text-gray-900 flex items-center justify-center shadow-lg hover:bg-gray-100 transition-colors z-20"
+              className="absolute cursor-pointer top-0 right-0 w-10 h-10 md:w-12 md:h-12 rounded-full bg-white text-gray-900 flex items-center justify-center shadow-lg hover:bg-gray-100 transition-colors z-20"
               aria-label="Close"
             >
               <X className="w-5 h-5 md:w-6 md:h-6" />
@@ -231,7 +233,7 @@ const HotelGridSlider = () => {
                     e.stopPropagation();
                     goPrev();
                   }}
-                  className="absolute left-0 top-1/2 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 rounded-full bg-white text-gray-900 flex items-center justify-center shadow-lg hover:bg-gray-100 transition-colors z-20 flex-shrink-0"
+                  className="absolute cursor-pointer left-0 top-1/2 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 rounded-full bg-white text-gray-900 flex items-center justify-center shadow-lg hover:bg-gray-100 transition-colors z-20 flex-shrink-0"
                   aria-label="Previous image"
                 >
                   <ChevronLeft className="w-5 h-5 md:w-6 md:h-6" />
@@ -263,7 +265,7 @@ const HotelGridSlider = () => {
                     e.stopPropagation();
                     goNext();
                   }}
-                  className="absolute right-0 top-1/2 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 rounded-full bg-white text-gray-900 flex items-center justify-center shadow-lg hover:bg-gray-100 transition-colors z-20 flex-shrink-0"
+                  className="absolute cursor-pointer right-0 top-1/2 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 rounded-full bg-white text-gray-900 flex items-center justify-center shadow-lg hover:bg-gray-100 transition-colors z-20 flex-shrink-0"
                   aria-label="Next image"
                 >
                   <ChevronRight className="w-5 h-5 md:w-6 md:h-6" />
