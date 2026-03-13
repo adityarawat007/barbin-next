@@ -30,7 +30,7 @@ export function GearedFinanceCalculator() {
   }
 
   return (
-    <div className="w-full mx-auto rounded-lg md:h-[505px] h-[1080px] overflow-auto ">
+    <div className="w-full mx-auto  rounded-lg md:h-[505px] h-[1100px] overflow-auto ">
       <iframe
         src={url}
         title="Geared Finance Calculator"
