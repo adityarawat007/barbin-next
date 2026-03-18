@@ -229,6 +229,11 @@ const Navbar = () => {
                 Contact
               </Link>
             </li>
+            <li>
+              <Link href="/finance" className={getLinkClasses("/finance")}>
+                Finance
+              </Link>
+            </li>
           </ul>
         </div>
 
@@ -359,7 +364,11 @@ const Navbar = () => {
                 Contact
               </Link>
             </li>
-
+            <li>
+              <Link href="/finance" className={getLinkClasses("/finance")}>
+                Finance
+              </Link>
+            </li>
             {/* Contact Icons for Mobile */}
             <li>
               <div className="flex items-center justify-center gap-4 mt-2">
